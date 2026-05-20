@@ -173,21 +173,24 @@ function Header({
     <header className="site-header">
       <a
         href="/"
-        className="wordmark"
+        className="brand-lockup"
         onClick={(event) => {
           event.preventDefault();
           handleNavigate('/');
         }}
         aria-label="BiteOrNot home"
       >
-        <span className="logo-lockup">
-          <img className="logo-icon" src="/assets/app-icons/icon.png" alt="" aria-hidden="true" />
-          <img
-            className="logo-image"
-            src="/assets/app-icons/biteornot_logo_product_not_found.png"
-            alt="BiteOrNot"
-          />
-        </span>
+        <img
+          className="brand-icon"
+          src="/assets/app-icons/icon.png"
+          alt=""
+          aria-hidden="true"
+        />
+        <img
+          className="brand-wordmark"
+          src="/assets/app-icons/biteornot_logo_product_not_found.png"
+          alt="BiteOrNot"
+        />
       </a>
       <nav className="desktop-nav" aria-label="Primary navigation">
         {navItems.map((item) => (

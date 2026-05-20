@@ -82,21 +82,34 @@ img {
   backdrop-filter: blur(18px);
 }
 
-.wordmark {
+.brand-lockup {
   display: inline-flex;
   align-items: center;
-  max-width: min(58vw, 230px);
-  line-height: 1;
-  color: var(--forest);
+  gap: 10px;
+  min-width: 0;
   text-decoration: none;
 }
 
-.logo-lockup {
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.brand-wordmark {
+  width: 136px;
+  height: auto;
+  flex: 0 1 auto;
+  object-fit: contain;
+}
+
+.wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  min-width: 0;
-  max-width: 100%;
+  line-height: 1;
+  color: var(--forest);
+  text-decoration: none;
 }
 
 .logo-icon {
@@ -812,6 +825,15 @@ p {
   .site-header {
     padding-right: 34px;
     padding-left: 34px;
+  }
+
+  .brand-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-wordmark {
+    width: 148px;
   }
 
   .desktop-nav {
