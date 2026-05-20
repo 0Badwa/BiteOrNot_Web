@@ -85,31 +85,17 @@ img {
 .wordmark {
   display: inline-flex;
   align-items: center;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 30px;
   line-height: 1;
   color: var(--forest);
   text-decoration: none;
 }
 
-.logo-lockup {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  min-width: 0;
-}
-
-.logo-lockup img {
-  width: 31px;
-  height: 31px;
+.logo-image {
+  display: block;
+  width: auto;
+  height: 32px;
+  max-width: 190px;
   object-fit: contain;
-  flex: 0 0 auto;
-}
-
-.logo-lockup span {
-  min-width: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  white-space: nowrap;
 }
 
 .desktop-nav {
@@ -697,6 +683,10 @@ p {
   margin-bottom: 10px;
 }
 
+.footer-logo-image {
+  height: 34px;
+}
+
 .footer-cta {
   min-height: 44px;
   display: inline-flex;
@@ -834,13 +824,13 @@ p {
     font-size: 66px;
   }
 
-  .wordmark {
-    font-size: 34px;
+  .logo-image {
+    height: 38px;
+    max-width: 230px;
   }
 
-  .logo-lockup img {
-    width: 34px;
-    height: 34px;
+  .footer-logo-image {
+    height: 36px;
   }
 
   .hero-visual .phone-mockup {

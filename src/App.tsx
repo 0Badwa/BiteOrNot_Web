@@ -7,6 +7,11 @@ type PhoneKind = ResultKind | 'notFound' | 'camera' | 'profile' | 'history';
 // TODO: Replace GOOGLE_PLAY_URL with the real Google Play Store listing before launch.
 const GOOGLE_PLAY_URL = '#google-play-link-needed';
 
+const storeLinkProps = () =>
+  GOOGLE_PLAY_URL.startsWith('#')
+    ? { href: GOOGLE_PLAY_URL }
+    : { href: GOOGLE_PLAY_URL, target: '_blank', rel: 'noreferrer' };
+
 const screenshots: Record<PhoneKind, string> = {
   pass: '/assets/screenshots/screenshot-pass.webp',
   check: '/assets/screenshots/screenshot-check.webp',
@@ -25,8 +30,10 @@ const navItems: Array<{ label: string; href: Route }> = [
   { label: 'Terms', href: '/terms' },
 ];
 
+// Privacy production URL should become https://<final-domain>/privacy
+// Terms production URL should become https://<final-domain>/terms
 const routeTitles: Record<Route, string> = {
-  '/': 'BiteOrNot — Scan food products before you eat',
+  '/': 'BiteOrNot — One fast product decision before you eat',
   '/how-it-works': 'How BiteOrNot works',
   '/pricing': 'BiteOrNot pricing',
   '/faq': 'BiteOrNot FAQ',
@@ -173,10 +180,11 @@ function Header({
         }}
         aria-label="BiteOrNot home"
       >
-        <span className="logo-lockup">
-          <img src="/assets/app-icons/icon.png" alt="" aria-hidden="true" />
-          <span>BiteOrNot</span>
-        </span>
+        <img
+          className="logo-image"
+          src="/assets/app-icons/biteornot_logo_product_not_found.png"
+          alt="BiteOrNot"
+        />
       </a>
       <nav className="desktop-nav" aria-label="Primary navigation">
         {navItems.map((item) => (
@@ -187,7 +195,7 @@ function Header({
             navigate={handleNavigate}
           />
         ))}
-        <a className="header-cta" href={GOOGLE_PLAY_URL}>
+        <a className="header-cta" {...storeLinkProps()}>
           Get it on Google Play
         </a>
       </nav>
@@ -213,7 +221,7 @@ function Header({
               navigate={handleNavigate}
             />
           ))}
-          <a className="header-cta" href={GOOGLE_PLAY_URL} onClick={() => setIsOpen(false)}>
+          <a className="header-cta" {...storeLinkProps()} onClick={() => setIsOpen(false)}>
             Get it on Google Play
           </a>
         </nav>
@@ -257,13 +265,14 @@ function Footer({ navigate }: { navigate: (href: Route) => void }) {
             navigate('/');
           }}
         >
-          <span className="logo-lockup">
-            <img src="/assets/app-icons/icon.png" alt="" aria-hidden="true" />
-            <span>BiteOrNot</span>
-          </span>
+          <img
+            className="logo-image footer-logo-image"
+            src="/assets/app-icons/biteornot_logo_product_not_found.png"
+            alt="BiteOrNot"
+          />
         </a>
         <p>One fast product decision. Scan. Decide. Done.</p>
-        <a className="footer-cta" href={GOOGLE_PLAY_URL}>
+        <a className="footer-cta" {...storeLinkProps()}>
           Get it on Google Play
         </a>
       </div>
@@ -327,7 +336,7 @@ function ButtonLink({
 
 function StoreButton({ children, variant = 'primary' }: { children: string; variant?: 'primary' | 'secondary' }) {
   return (
-    <a className={`button ${variant}`} href={GOOGLE_PLAY_URL}>
+    <a className={`button ${variant}`} {...storeLinkProps()}>
       {children}
     </a>
   );
@@ -339,7 +348,7 @@ function HomePage({ navigate }: { navigate: (href: Route) => void }) {
       <section className="hero section-shell">
         <div className="hero-copy">
           <p className="eyebrow">One fast product decision.</p>
-          <h1>One fast answer before you eat.</h1>
+          <h1>One clear answer before you eat.</h1>
           <p className="hero-subtitle">
             Scan a barcode and get a simple PASS, CHECK or AVOID based on your selected
             restrictions.
@@ -358,8 +367,7 @@ function HomePage({ navigate }: { navigate: (href: Route) => void }) {
         </div>
         <div className="hero-visual" aria-label="BiteOrNot app result examples">
           <PhoneMockup kind="pass" label="PASS result screen visual reference" />
-          <PhoneMockup kind="avoid" label="AVOID result screen visual reference" />
-          <PhoneMockup kind="notFound" label="Product not found fallback screen visual reference" />
+          <PhoneMockup kind="check" label="CHECK result screen visual reference" />
         </div>
       </section>
 
@@ -522,7 +530,6 @@ function PricingPage() {
             'No account required',
           ]}
           cta="Download app"
-          ctaUrl={GOOGLE_PLAY_URL}
         />
         <PricingCard
           featured
@@ -539,7 +546,6 @@ function PricingPage() {
             'Built for people who check products often',
           ]}
           cta="Upgrade in app"
-          ctaUrl={GOOGLE_PLAY_URL}
         />
       </section>
       <p id="google-play-link-needed" className="pricing-note section-shell">
@@ -720,7 +726,6 @@ function PricingCard({
   highlight,
   bullets,
   cta,
-  ctaUrl,
   featured = false,
 }: {
   title: string;
@@ -730,14 +735,13 @@ function PricingCard({
   highlight?: string;
   bullets: string[];
   cta: string;
-  ctaUrl: string;
   featured?: boolean;
 }) {
   return (
     <article className={`pricing-card ${featured ? 'featured' : ''}`}>
       <div>
-        {badge ? <p className="plan-badge">{badge}</p> : null}
         <p className="plan-label">{title}</p>
+        {badge ? <p className="plan-badge">{badge}</p> : null}
         <p className="price">{price}</p>
         {secondaryPrice ? <p className="secondary-price">{secondaryPrice}</p> : null}
         {highlight ? <p className="highlight">{highlight}</p> : null}
@@ -747,7 +751,7 @@ function PricingCard({
           <li key={bullet}>{bullet}</li>
         ))}
       </ul>
-      <a className="button primary" href={ctaUrl}>
+      <a className="button primary" {...storeLinkProps()}>
         {cta}
       </a>
     </article>
