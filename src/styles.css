@@ -100,8 +100,8 @@ img {
 }
 
 .logo-icon {
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
   flex: 0 0 auto;
 }
@@ -109,8 +109,8 @@ img {
 .logo-image {
   display: block;
   width: auto;
-  height: 28px;
-  max-width: 156px;
+  height: 34px;
+  max-width: 188px;
   object-fit: contain;
   flex: 1 1 auto;
 }
@@ -725,12 +725,12 @@ p {
 }
 
 .footer-logo-image {
-  height: 30px;
+  height: 34px;
 }
 
 .footer-logo-lockup .logo-icon {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
 }
 
 .footer-cta {
@@ -871,22 +871,22 @@ p {
   }
 
   .logo-image {
-    height: 34px;
+    height: 40px;
     max-width: 230px;
   }
 
   .logo-icon {
-    width: 31px;
-    height: 31px;
+    width: 36px;
+    height: 36px;
   }
 
   .footer-logo-image {
-    height: 32px;
+    height: 38px;
   }
 
   .footer-logo-lockup .logo-icon {
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
   }
 
   .hero-visual .phone-mockup {

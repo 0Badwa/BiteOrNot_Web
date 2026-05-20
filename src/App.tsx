@@ -199,7 +199,7 @@ function Header({
           />
         ))}
         <a className="header-cta" {...storeLinkProps()}>
-          Get it on Google Play
+          Coming soon to Google Play
         </a>
       </nav>
       <button
@@ -225,7 +225,7 @@ function Header({
             />
           ))}
           <a className="header-cta" {...storeLinkProps()} onClick={() => setIsOpen(false)}>
-            Get it on Google Play
+            Coming soon to Google Play
           </a>
         </nav>
       ) : null}
@@ -279,7 +279,7 @@ function Footer({ navigate }: { navigate: (href: Route) => void }) {
         </a>
         <p>One fast product decision. Scan. Decide. Done.</p>
         <a className="footer-cta" {...storeLinkProps()}>
-          Get it on Google Play
+          Coming soon to Google Play
         </a>
       </div>
       <div className="footer-links">
@@ -360,7 +360,7 @@ function HomePage({ navigate }: { navigate: (href: Route) => void }) {
             restrictions.
           </p>
           <div className="button-row">
-            <StoreButton>Get it on Google Play</StoreButton>
+            <StoreButton>Coming soon to Google Play</StoreButton>
             <ButtonLink href="/pricing" variant="secondary" navigate={navigate}>
               View pricing
             </ButtonLink>
@@ -535,7 +535,7 @@ function PricingPage() {
             'PASS / CHECK / AVOID included',
             'No account required',
           ]}
-          cta="Download app"
+          cta="Available at launch"
         />
         <PricingCard
           featured
@@ -551,11 +551,11 @@ function PricingPage() {
             'Saved combined profile',
             'Built for people who check products often',
           ]}
-          cta="Upgrade in app"
+          cta="Available in app after launch"
         />
       </section>
       <p id="google-play-link-needed" className="pricing-note section-shell">
-        Subscriptions are handled through Google Play. Prices may vary by region.
+        Subscriptions will be handled through Google Play when the app is available. Prices may vary by region.
       </p>
     </>
   );
