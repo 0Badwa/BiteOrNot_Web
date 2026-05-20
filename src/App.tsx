@@ -358,7 +358,7 @@ function HomePage({ navigate }: { navigate: (href: Route) => void }) {
         </div>
         <div className="hero-visual" aria-label="BiteOrNot app result examples">
           <PhoneMockup kind="pass" label="PASS result screen visual reference" />
-          <PhoneMockup kind="check" label="CHECK result screen visual reference" />
+          <PhoneMockup kind="avoid" label="AVOID result screen visual reference" />
           <PhoneMockup kind="notFound" label="Product not found fallback screen visual reference" />
         </div>
       </section>

@@ -323,7 +323,8 @@ p {
   z-index: 3;
 }
 
-.hero-visual .phone-mockup.check {
+.hero-visual .phone-mockup.check,
+.hero-visual .phone-mockup.avoid {
   transform: translate(78px, 26px) rotate(5deg);
   z-index: 2;
 }
@@ -755,7 +756,8 @@ p {
     transform: none !important;
   }
 
-  .hero-visual .phone-mockup.check {
+  .hero-visual .phone-mockup.check,
+  .hero-visual .phone-mockup.avoid {
     display: none;
   }
 
@@ -849,7 +851,8 @@ p {
     transform: translate(-100px, -30px) rotate(-4deg);
   }
 
-  .hero-visual .phone-mockup.check {
+  .hero-visual .phone-mockup.check,
+  .hero-visual .phone-mockup.avoid {
     transform: translate(96px, 28px) rotate(5deg);
   }
 
