@@ -291,7 +291,7 @@ function Footer({ navigate }: { navigate: (href: Route) => void }) {
           <FooterLink key={item.href} href={item.href} label={item.label} navigate={navigate} />
         ))}
       </div>
-      <p className="footer-contact">Contact: biteornot.contact@gmail.com</p>
+      <p className="footer-contact">Contact: contact@biteornot.com</p>
     </footer>
   );
 }
@@ -632,8 +632,7 @@ function PrivacyPage() {
         missing or unclear, BiteOrNot is designed to show CHECK.
       </p>
       <h2>Contact</h2>
-      {/* TODO: Replace contact email before production if needed. */}
-      <p>biteornot.contact@gmail.com</p>
+      <p>contact@biteornot.com</p>
     </LegalPageLayout>
   );
 }
@@ -691,7 +690,7 @@ function TermsPage() {
         updated terms.
       </p>
       <h2>10. Contact</h2>
-      <p>biteornot.contact@gmail.com</p>
+      <p>contact@biteornot.com</p>
     </LegalPageLayout>
   );
 }
