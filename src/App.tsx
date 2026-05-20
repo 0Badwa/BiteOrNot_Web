@@ -4,6 +4,19 @@ type Route = '/' | '/how-it-works' | '/pricing' | '/faq' | '/privacy' | '/terms'
 type ResultKind = 'pass' | 'check' | 'avoid';
 type PhoneKind = ResultKind | 'notFound' | 'camera' | 'profile' | 'history';
 
+// TODO: Replace GOOGLE_PLAY_URL with the real Google Play Store listing before launch.
+const GOOGLE_PLAY_URL = '#google-play-link-needed';
+
+const screenshots: Record<PhoneKind, string> = {
+  pass: '/assets/screenshots/screenshot-pass.webp',
+  check: '/assets/screenshots/screenshot-check.webp',
+  avoid: '/assets/screenshots/screenshot-avoid.webp',
+  notFound: '/assets/screenshots/screenshot-product-not-found.webp',
+  camera: '/assets/screenshots/screenshot-camera.webp',
+  profile: '/assets/screenshots/screenshot-profile.webp',
+  history: '/assets/screenshots/screenshot-history.webp',
+};
+
 const navItems: Array<{ label: string; href: Route }> = [
   { label: 'How it works', href: '/how-it-works' },
   { label: 'Pricing', href: '/pricing' },
@@ -160,7 +173,10 @@ function Header({
         }}
         aria-label="BiteOrNot home"
       >
-        BiteOrNot
+        <span className="logo-lockup">
+          <img src="/assets/app-icons/icon.png" alt="" aria-hidden="true" />
+          <span>BiteOrNot</span>
+        </span>
       </a>
       <nav className="desktop-nav" aria-label="Primary navigation">
         {navItems.map((item) => (
@@ -171,8 +187,8 @@ function Header({
             navigate={handleNavigate}
           />
         ))}
-        <a className="header-cta" href="#google-play-placeholder">
-          Coming soon on Google Play
+        <a className="header-cta" href={GOOGLE_PLAY_URL}>
+          Get it on Google Play
         </a>
       </nav>
       <button
@@ -197,8 +213,8 @@ function Header({
               navigate={handleNavigate}
             />
           ))}
-          <a className="header-cta" href="#google-play-placeholder" onClick={() => setIsOpen(false)}>
-            Coming soon on Google Play
+          <a className="header-cta" href={GOOGLE_PLAY_URL} onClick={() => setIsOpen(false)}>
+            Get it on Google Play
           </a>
         </nav>
       ) : null}
@@ -241,9 +257,15 @@ function Footer({ navigate }: { navigate: (href: Route) => void }) {
             navigate('/');
           }}
         >
-          BiteOrNot
+          <span className="logo-lockup">
+            <img src="/assets/app-icons/icon.png" alt="" aria-hidden="true" />
+            <span>BiteOrNot</span>
+          </span>
         </a>
         <p>One fast product decision. Scan. Decide. Done.</p>
+        <a className="footer-cta" href={GOOGLE_PLAY_URL}>
+          Get it on Google Play
+        </a>
       </div>
       <div className="footer-links">
         <FooterLink href="/" label="Home" navigate={navigate} />
@@ -303,6 +325,14 @@ function ButtonLink({
   );
 }
 
+function StoreButton({ children, variant = 'primary' }: { children: string; variant?: 'primary' | 'secondary' }) {
+  return (
+    <a className={`button ${variant}`} href={GOOGLE_PLAY_URL}>
+      {children}
+    </a>
+  );
+}
+
 function HomePage({ navigate }: { navigate: (href: Route) => void }) {
   return (
     <>
@@ -315,9 +345,7 @@ function HomePage({ navigate }: { navigate: (href: Route) => void }) {
             restrictions.
           </p>
           <div className="button-row">
-            <ButtonLink href="/how-it-works" navigate={navigate}>
-              See how it works
-            </ButtonLink>
+            <StoreButton>Get it on Google Play</StoreButton>
             <ButtonLink href="/pricing" variant="secondary" navigate={navigate}>
               View pricing
             </ButtonLink>
@@ -357,6 +385,21 @@ function HomePage({ navigate }: { navigate: (href: Route) => void }) {
           BiteOrNot never fakes PASS. If product data is missing or unclear, the app
           shows CHECK.
         </p>
+      </section>
+
+      <section className="section-shell fallback-section">
+        <div>
+          <p className="eyebrow">Barcode missing?</p>
+          <h2>Product not found? Scan the label anyway.</h2>
+          <p>
+            If the barcode is missing from the database, BiteOrNot can still check the
+            product from the ingredients or nutrition label and return a conservative result.
+          </p>
+          <ButtonLink href="/how-it-works" variant="secondary" navigate={navigate}>
+            See how it works
+          </ButtonLink>
+        </div>
+        <PhoneMockup kind="notFound" label="Product not found fallback screenshot" />
       </section>
 
       <section className="section-shell">
@@ -427,9 +470,10 @@ function HowItWorksPage({ navigate }: { navigate: (href: Route) => void }) {
             Missing data should never become PASS.
           </Step>
         </div>
-        <div className="phone-pair">
+        <div className="phone-pair how-phone-pair">
           <PhoneMockup kind="camera" label="Camera barcode scan screen visual reference" />
           <PhoneMockup kind="notFound" label="Product not found fallback screen visual reference" />
+          <PhoneMockup kind="check" label="CHECK result screen visual reference" />
         </div>
       </section>
       <section className="section-shell flow-grid">
@@ -448,7 +492,10 @@ function HowItWorksPage({ navigate }: { navigate: (href: Route) => void }) {
             Read privacy details
           </ButtonLink>
         </div>
-        <PhoneMockup kind="profile" label="Profile modal screen visual reference" />
+        <div className="profile-visuals">
+          <PhoneMockup kind="profile" label="Profile modal screen visual reference" />
+          <PhoneMockup kind="history" label="Recent local scan history screen visual reference" />
+        </div>
       </section>
     </>
   );
@@ -474,11 +521,13 @@ function PricingPage() {
             'PASS / CHECK / AVOID included',
             'No account required',
           ]}
-          cta="Start free"
+          cta="Download app"
+          ctaUrl={GOOGLE_PLAY_URL}
         />
         <PricingCard
           featured
           title="Pro"
+          badge="Best for multiple restrictions"
           price="$4.99 / month"
           secondaryPrice="$39.99 / year"
           highlight="Check all your restrictions at once."
@@ -489,12 +538,12 @@ function PricingPage() {
             'Saved combined profile',
             'Built for people who check products often',
           ]}
-          cta="Coming soon"
+          cta="Upgrade in app"
+          ctaUrl={GOOGLE_PLAY_URL}
         />
       </section>
-      <p id="google-play-placeholder" className="pricing-note section-shell">
-        Subscriptions will be handled through Google Play when available. Prices may vary by
-        region.
+      <p id="google-play-link-needed" className="pricing-note section-shell">
+        Subscriptions are handled through Google Play. Prices may vary by region.
       </p>
     </>
   );
@@ -505,7 +554,7 @@ function FAQPage() {
     <>
       <PageHero
         eyebrow="FAQ"
-        title="Clear answers before launch."
+        title="Clear answers before you scan."
         body="BiteOrNot is focused on fast product decisions, not health scoring or diet coaching."
       />
       <section className="section-shell faq-list">
@@ -665,24 +714,29 @@ function FeatureCard({ icon, title, body }: { icon: string; title: string; body:
 
 function PricingCard({
   title,
+  badge,
   price,
   secondaryPrice,
   highlight,
   bullets,
   cta,
+  ctaUrl,
   featured = false,
 }: {
   title: string;
+  badge?: string;
   price: string;
   secondaryPrice?: string;
   highlight?: string;
   bullets: string[];
   cta: string;
+  ctaUrl: string;
   featured?: boolean;
 }) {
   return (
     <article className={`pricing-card ${featured ? 'featured' : ''}`}>
       <div>
+        {badge ? <p className="plan-badge">{badge}</p> : null}
         <p className="plan-label">{title}</p>
         <p className="price">{price}</p>
         {secondaryPrice ? <p className="secondary-price">{secondaryPrice}</p> : null}
@@ -693,9 +747,9 @@ function PricingCard({
           <li key={bullet}>{bullet}</li>
         ))}
       </ul>
-      <button className="button primary" type="button">
+      <a className="button primary" href={ctaUrl}>
         {cta}
-      </button>
+      </a>
     </article>
   );
 }
@@ -765,148 +819,10 @@ function FlowCard({ title, items }: { title: string; items: string[] }) {
 
 function PhoneMockup({ kind, label }: { kind: PhoneKind; label: string }) {
   return (
-    <figure className={`phone-mockup ${kind}`} role="img" aria-label={label}>
+    <figure className={`phone-mockup ${kind}`}>
       <div className="phone-screen">
-        <PhoneContent kind={kind} />
+        <img src={screenshots[kind]} alt={label} loading="lazy" />
       </div>
     </figure>
-  );
-}
-
-function PhoneContent({ kind }: { kind: PhoneKind }) {
-  if (kind === 'notFound') {
-    return (
-      <div className="screen not-found-screen">
-        <p className="screen-wordmark">BiteOrNot</p>
-        <div className="barcode-illustration">?</div>
-        <h3>Product not found</h3>
-        <p>This barcode isn’t in the database.</p>
-        <ScreenStep number="1" title="Scan the ingredients or nutrition label" />
-        <ScreenStep number="2" title="Get a conservative result" />
-        <div className="screen-button">Scan product label</div>
-        <BottomNav />
-      </div>
-    );
-  }
-
-  if (kind === 'camera') {
-    return (
-      <div className="screen camera-screen">
-        <div className="camera-actions">
-          <span />
-          <span />
-        </div>
-        <h3>Scan a barcode</h3>
-        <div className="scan-frame">
-          <span />
-        </div>
-      </div>
-    );
-  }
-
-  if (kind === 'profile') {
-    return (
-      <div className="screen profile-screen">
-        <div className="modal-card">
-          <h3>Profile</h3>
-          <MiniGroup title="Conditions" items={['Diabetes', 'Hypertension', 'Cardiovascular']} checked />
-          <MiniGroup title="Diet" items={['Vegetarian', 'Vegan']} />
-          <MiniGroup title="Allergens" items={['Milk', 'Lactose', 'Egg']} />
-          <p className="profile-note">Your profile is used only to check products against your selected restrictions.</p>
-          <div className="done-button">Done</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (kind === 'history') {
-    return (
-      <div className="screen history-screen">
-        <h3>History</h3>
-        <p>Recent local scans</p>
-        {['Roasted Cashew-Peanut-Mix', 'Elephant Squeezed Pretzels', 'Scanned label', 'Plazma'].map(
-          (item) => (
-            <div className="history-row" key={item}>
-              <span />
-              <strong>{item}</strong>
-              <small>20.05.2026</small>
-            </div>
-          ),
-        )}
-        <div className="done-button">Done</div>
-      </div>
-    );
-  }
-
-  const copy = resultCopy[kind];
-  const product =
-    kind === 'avoid' ? 'Roasted Cashew-Peanut-Mix H.' : 'Elephant Squeezed Pretzels.';
-  const reason = kind === 'pass' ? 'No issues found' : kind === 'check' ? 'High carbohydrates' : 'High sugar';
-
-  return (
-    <div className={`screen result-screen ${kind}`}>
-      <div className="product-glow" />
-      <div className="product-thumb" />
-      <h3>{product}</h3>
-      <p>Alka · 80 g</p>
-      <div className="result-circle">
-        <span>{copy.symbol}</span>
-        <strong>{copy.title}</strong>
-        <small>{kind === 'pass' ? 'No restrictions selected' : kind === 'check' ? 'Needs a closer look' : 'Doesn’t match your profile'}</small>
-      </div>
-      <div className="nutrition-row">
-        <NutritionItem label="Fat / Saturated" value={kind === 'avoid' ? '32.4/5.6g' : '13/1.5g'} />
-        <NutritionItem label="Sugar" value={kind === 'avoid' ? '35.5g' : '5.6g'} />
-        <NutritionItem label="Salt" value={kind === 'pass' ? '6g' : '0.8g'} />
-      </div>
-      <div className="reason-box">
-        <strong>Why this result</strong>
-        <span>{reason}</span>
-      </div>
-      <BottomNav />
-    </div>
-  );
-}
-
-function ScreenStep({ number, title }: { number: string; title: string }) {
-  return (
-    <div className="screen-step">
-      <span>{number}</span>
-      <strong>{title}</strong>
-    </div>
-  );
-}
-
-function NutritionItem({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <span>{label}</span>
-      <strong>{value}</strong>
-      <small>/ 100g</small>
-    </div>
-  );
-}
-
-function BottomNav() {
-  return (
-    <div className="bottom-nav">
-      <span>History</span>
-      <img src="/assets/app-icons/scan_button.png" alt="" aria-hidden="true" />
-      <span>Profile</span>
-    </div>
-  );
-}
-
-function MiniGroup({ title, items, checked = false }: { title: string; items: string[]; checked?: boolean }) {
-  return (
-    <div className="mini-group">
-      <h4>{title}</h4>
-      {items.map((item, index) => (
-        <p key={item}>
-          <span className={checked && index === 0 ? 'checked' : ''} />
-          {item}
-        </p>
-      ))}
-    </div>
   );
 }
