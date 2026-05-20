@@ -85,7 +85,7 @@ img {
 .brand-lockup {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 0;
   min-width: 0;
   text-decoration: none;
 }
@@ -98,11 +98,11 @@ img {
 }
 
 .brand-wordmark {
-  width: 164px;
+  width: 197px;
   height: auto;
   flex: 0 1 auto;
   object-fit: contain;
-  margin-left: -4px;
+  margin-left: -14px;
 }
 
 .wordmark {
@@ -834,8 +834,8 @@ p {
   }
 
   .brand-wordmark {
-    width: 178px;
-    margin-left: -4px;
+    width: 214px;
+    margin-left: -14px;
   }
 
   .desktop-nav {
