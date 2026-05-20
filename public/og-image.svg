@@ -1,0 +1,12 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#FAF7EF"/>
+  <rect x="80" y="70" width="1040" height="490" rx="44" fill="#FFFDF7" stroke="#E6E1D8" stroke-width="2"/>
+  <text x="120" y="180" fill="#123D32" font-size="82" font-family="Georgia, serif">BiteOrNot</text>
+  <text x="120" y="260" fill="#111827" font-size="44" font-family="Inter, system-ui, sans-serif">One fast answer before you eat.</text>
+  <text x="120" y="330" fill="#5F675F" font-size="30" font-family="Inter, system-ui, sans-serif">Scan. Decide. Done.</text>
+  <g transform="translate(770 132)">
+    <circle cx="150" cy="150" r="132" fill="#FFFFFF" stroke="#22B84A" stroke-width="20"/>
+    <path d="M94 153l38 38 80-91" stroke="#22B84A" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="72" y="235" fill="#22B84A" font-size="50" font-weight="800" font-family="Inter, system-ui, sans-serif">PASS</text>
+  </g>
+</svg>
