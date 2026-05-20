@@ -15,7 +15,108 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/og-image.svg" />
+    <link rel="canonical" href="https://www.biteornot.com/" />
     <link rel="icon" type="image/png" href="/assets/app-icons/icon.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "BiteOrNot",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Android",
+        "description": "BiteOrNot scans food products and returns PASS, CHECK or AVOID based on selected restrictions.",
+        "url": "https://www.biteornot.com/",
+        "offers": [
+          {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "price": "4.99",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "price": "39.99",
+            "priceCurrency": "USD"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is BiteOrNot medical advice?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. BiteOrNot checks product label data against your selected restrictions. It does not diagnose, treat, or replace professional medical advice."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does PASS mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PASS means the available product data did not conflict with your selected restriction. Always check the physical label if the product is important for your health or allergy safety."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does CHECK mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CHECK means the product needs a closer look. Data may be missing, unclear, incomplete, or not verified."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does AVOID mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AVOID means the product appears to conflict with your selected restriction."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens when a barcode is not found?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "BiteOrNot can still help. You can scan the ingredients or nutrition label and get a conservative result."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need an account?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. BiteOrNot does not require an account for the core scan flow."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is my profile stored?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your selected restrictions are stored on your device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is BiteOrNot a calorie tracker?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. BiteOrNot is focused on fast product decisions, not tracking meals or calories."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

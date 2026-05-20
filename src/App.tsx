@@ -30,8 +30,8 @@ const navItems: Array<{ label: string; href: Route }> = [
   { label: 'Terms', href: '/terms' },
 ];
 
-// Privacy production URL should become https://<final-domain>/privacy
-// Terms production URL should become https://<final-domain>/terms
+// Privacy production URL: https://www.biteornot.com/privacy
+// Terms production URL: https://www.biteornot.com/terms
 const routeTitles: Record<Route, string> = {
   '/': 'BiteOrNot — One fast product decision before you eat',
   '/how-it-works': 'How BiteOrNot works',

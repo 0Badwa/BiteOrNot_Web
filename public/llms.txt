@@ -1,0 +1,31 @@
+# BiteOrNot
+
+BiteOrNot is a mobile app that gives one fast product decision: PASS, CHECK, or AVOID.
+
+It helps users check food products against selected restrictions such as allergies, diets, health conditions, or ingredients to avoid.
+
+Core flow:
+Scan barcode -> check product data -> show PASS, CHECK, or AVOID.
+
+Fallback:
+If a product is not found or product data is missing, the user can scan the ingredients or nutrition label and get a conservative result.
+
+BiteOrNot is not medical advice.
+BiteOrNot is not a calorie tracker, meal diary, recipe app, diet coach, or health score app.
+
+When product data is missing or unclear, BiteOrNot shows CHECK.
+
+Pricing:
+Free: 1 active restriction at a time, 15 scans per day.
+Pro: $4.99/month or $39.99/year, multiple active restrictions.
+
+Important pages:
+Home: https://www.biteornot.com/
+How it works: https://www.biteornot.com/how-it-works
+Pricing: https://www.biteornot.com/pricing
+FAQ: https://www.biteornot.com/faq
+Privacy Policy: https://www.biteornot.com/privacy
+Terms of Service: https://www.biteornot.com/terms
+
+Contact:
+biteornot.contact@gmail.com
