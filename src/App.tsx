@@ -4,7 +4,7 @@ type Route = '/' | '/how-it-works' | '/pricing' | '/faq' | '/privacy' | '/terms'
 type ResultKind = 'pass' | 'check' | 'avoid';
 type PhoneKind = ResultKind | 'notFound' | 'camera' | 'profile' | 'history';
 
-// TODO: Replace GOOGLE_PLAY_URL with the real Google Play Store listing before launch.
+// TODO: Replace GOOGLE_PLAY_URL with the real Google Play Store listing before production.
 const GOOGLE_PLAY_URL = '#google-play-link-needed';
 
 const storeLinkProps = () =>
@@ -180,11 +180,14 @@ function Header({
         }}
         aria-label="BiteOrNot home"
       >
-        <img
-          className="logo-image"
-          src="/assets/app-icons/biteornot_logo_product_not_found.png"
-          alt="BiteOrNot"
-        />
+        <span className="logo-lockup">
+          <img className="logo-icon" src="/assets/app-icons/icon.png" alt="" aria-hidden="true" />
+          <img
+            className="logo-image"
+            src="/assets/app-icons/biteornot_logo_product_not_found.png"
+            alt="BiteOrNot"
+          />
+        </span>
       </a>
       <nav className="desktop-nav" aria-label="Primary navigation">
         {navItems.map((item) => (
@@ -265,11 +268,14 @@ function Footer({ navigate }: { navigate: (href: Route) => void }) {
             navigate('/');
           }}
         >
-          <img
-            className="logo-image footer-logo-image"
-            src="/assets/app-icons/biteornot_logo_product_not_found.png"
-            alt="BiteOrNot"
-          />
+          <span className="logo-lockup footer-logo-lockup">
+            <img className="logo-icon" src="/assets/app-icons/icon.png" alt="" aria-hidden="true" />
+            <img
+              className="logo-image footer-logo-image"
+              src="/assets/app-icons/biteornot_logo_product_not_found.png"
+              alt="BiteOrNot"
+            />
+          </span>
         </a>
         <p>One fast product decision. Scan. Decide. Done.</p>
         <a className="footer-cta" {...storeLinkProps()}>
@@ -514,7 +520,7 @@ function PricingPage() {
     <>
       <PageHero
         eyebrow="Pricing"
-        title="Start free. Upgrade when you check often."
+        title="Use BiteOrNot free. Upgrade when you check often."
         body="The core product decision flow is available without an account."
       />
       <section className="section-shell pricing-grid">
@@ -574,7 +580,7 @@ function FAQPage() {
 
 function PrivacyPage() {
   return (
-    <LegalPageLayout title="Privacy Policy" effectiveDate="Effective date: To be added before launch">
+    <LegalPageLayout title="Privacy Policy" effectiveDate="Effective date: To be added">
       <p>BiteOrNot is designed to work without a mandatory account.</p>
       <h2>Information stored on your device</h2>
       <ul>
@@ -631,7 +637,7 @@ function PrivacyPage() {
 
 function TermsPage() {
   return (
-    <LegalPageLayout title="Terms of Service" effectiveDate="Effective date: To be added before launch">
+    <LegalPageLayout title="Terms of Service" effectiveDate="Effective date: To be added">
       <h2>1. What BiteOrNot does</h2>
       <p>
         BiteOrNot helps users check food products against selected restrictions and returns
@@ -742,8 +748,20 @@ function PricingCard({
       <div>
         <p className="plan-label">{title}</p>
         {badge ? <p className="plan-badge">{badge}</p> : null}
-        <p className="price">{price}</p>
-        {secondaryPrice ? <p className="secondary-price">{secondaryPrice}</p> : null}
+        {secondaryPrice ? (
+          <div className="price-options">
+            <div className="price-option">
+              <p className="price">{price}</p>
+              <span>Monthly plan</span>
+            </div>
+            <div className="price-option">
+              <p className="price">{secondaryPrice}</p>
+              <span>Annual plan</span>
+            </div>
+          </div>
+        ) : (
+          <p className="price">{price}</p>
+        )}
         {highlight ? <p className="highlight">{highlight}</p> : null}
       </div>
       <ul>

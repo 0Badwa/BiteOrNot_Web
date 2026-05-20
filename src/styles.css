@@ -85,17 +85,34 @@ img {
 .wordmark {
   display: inline-flex;
   align-items: center;
+  max-width: min(58vw, 230px);
   line-height: 1;
   color: var(--forest);
   text-decoration: none;
 }
 
+.logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.logo-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
 .logo-image {
   display: block;
   width: auto;
-  height: 32px;
-  max-width: 190px;
+  height: 28px;
+  max-width: 156px;
   object-fit: contain;
+  flex: 1 1 auto;
 }
 
 .desktop-nav {
@@ -598,7 +615,31 @@ p {
   line-height: 1;
 }
 
-.secondary-price,
+.price-options {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.price-option {
+  padding: 14px;
+  border: 1px solid rgba(18, 61, 50, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.price-option .price {
+  margin-bottom: 6px;
+  font-size: 34px;
+}
+
+.price-option span {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 900;
+}
+
 .highlight {
   margin-bottom: 0;
   color: var(--forest);
@@ -684,7 +725,12 @@ p {
 }
 
 .footer-logo-image {
-  height: 34px;
+  height: 30px;
+}
+
+.footer-logo-lockup .logo-icon {
+  width: 28px;
+  height: 28px;
 }
 
 .footer-cta {
@@ -825,12 +871,22 @@ p {
   }
 
   .logo-image {
-    height: 38px;
+    height: 34px;
     max-width: 230px;
   }
 
+  .logo-icon {
+    width: 31px;
+    height: 31px;
+  }
+
   .footer-logo-image {
-    height: 36px;
+    height: 32px;
+  }
+
+  .footer-logo-lockup .logo-icon {
+    width: 30px;
+    height: 30px;
   }
 
   .hero-visual .phone-mockup {
