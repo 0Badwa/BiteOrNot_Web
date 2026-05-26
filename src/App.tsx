@@ -583,55 +583,136 @@ function FAQPage() {
 
 function PrivacyPage() {
   return (
-    <LegalPageLayout title="Privacy Policy" effectiveDate="Effective date: To be added">
-      <p>BiteOrNot is designed to work without a mandatory account.</p>
+    <LegalPageLayout title="Privacy Policy" effectiveDate="Effective date: May 26, 2026">
+      <p>
+        BiteOrNot helps users check whether a food product matches their selected restrictions,
+        such as diet preferences, allergies, or selected health-related conditions. BiteOrNot is
+        not medical advice and does not diagnose, treat, or prevent any disease.
+      </p>
       <h2>Information stored on your device</h2>
-      <ul>
-        <li>selected profile restrictions such as conditions, diets, allergens, or ingredients to avoid</li>
-        <li>recent local scan history, if enabled</li>
-        <li>local app preferences</li>
-      </ul>
-      <p>This information is used to check products against your selected restrictions.</p>
-      <h2>Camera</h2>
       <p>
-        BiteOrNot uses the camera to scan barcodes and product labels. Camera access is
-        required for scanning.
+        BiteOrNot stores your selected profile locally on your device. This may include selected
+        allergies, diet preferences, and selected conditions such as diabetes, hypertension,
+        cardiovascular concerns, or high cholesterol.
       </p>
-      <h2>Product data</h2>
       <p>
-        When you scan a barcode, the app may request product data from Open Food Facts or
-        another product data source. The barcode is used to look up the product.
+        BiteOrNot may also store local scan history on your device, including product name,
+        barcode, product image URL, nutrition values, result, and result reasons.
       </p>
-      <h2>Label scan fallback</h2>
       <p>
-        If barcode data is missing or incomplete, the app may process captured label text or
-        label images to extract ingredients, allergens, traces, and nutrition values. If AI
-        extraction is used, label images or text may be sent to an external processing service
-        through the app’s backend or API provider.
+        This data is stored locally on your device and is not linked to an account. BiteOrNot does
+        not require login.
       </p>
-      <h2>No mandatory account</h2>
-      <p>BiteOrNot does not require users to create an account for the core scan flow.</p>
+      <h2>Barcode scans</h2>
+      <p>
+        When you scan a barcode, BiteOrNot sends the barcode to Open Food Facts to look up product
+        information.
+      </p>
+      <p>
+        Open Food Facts may return product name, brand, quantity, product image, nutrition values,
+        ingredients, allergens, traces, and similar product label data.
+      </p>
+      <h2>Label scans and OCR/AI processing</h2>
+      <p>
+        If a product is not found or product data is incomplete, you may scan the product label.
+      </p>
+      <p>
+        When you use label scan, the captured label image is sent to BiteOrNot backend services for
+        OCR and AI extraction. The backend may use Google Cloud/Firebase services, Google Vision
+        OCR, and Google Gemini to extract and normalize product label information such as
+        ingredients, allergens, traces, nutrition values, and product name candidates.
+      </p>
+      <p>
+        AI is used only to extract and normalize label information. AI does not decide whether a
+        product is PASS, CHECK, or AVOID. The final result is determined by BiteOrNot’s
+        deterministic rule engine.
+      </p>
+      <h2>Temporary backend cache</h2>
+      <p>
+        To prevent duplicate processing, duplicate charges, repeated OCR/AI requests, and abuse,
+        BiteOrNot may temporarily cache OCR/AI extraction responses on the backend.
+      </p>
+      <p>
+        This cache may include extracted OCR text and normalized label data, but not the raw label
+        image or image base64 payload.
+      </p>
+      <p>The cache is configured to expire after approximately 7 days.</p>
+      <h2>Abuse prevention and security</h2>
+      <p>
+        BiteOrNot uses Firebase App Check / Google Play Integrity and backend rate limits to
+        protect the service from abuse.
+      </p>
+      <p>
+        The backend may process technical request metadata such as an anonymous install identifier,
+        idempotency key, request type, hashed IP-based rate-limit signal, timestamps, response
+        status, and usage counters.
+      </p>
+      <p>
+        Raw IP addresses are not intentionally stored in BiteOrNot application data. IP-related
+        rate-limit data is stored only as a hash.
+      </p>
       <h2>Analytics and technical events</h2>
-      <p>The app may collect limited anonymous technical events to improve reliability, such as:</p>
+      <p>BiteOrNot may use anonymous technical events, such as:</p>
       <ul>
-        <li>product found</li>
-        <li>product not found</li>
-        <li>product data error</li>
-        <li>label fallback used</li>
+        <li>product found or not found</li>
+        <li>OCR or AI fallback used</li>
         <li>parser unclear</li>
         <li>result shown</li>
+        <li>backend usage counters</li>
       </ul>
       <p>
-        These events should not include raw label images, raw label text, personal identity, or
-        detailed health profile data.
+        These events are used to improve reliability, detect abuse, and control backend cost. They
+        are not used for advertising or user tracking.
       </p>
-      <h2>Important</h2>
+      <h2>What BiteOrNot does not do</h2>
+      <p>BiteOrNot does not:</p>
+      <ul>
+        <li>require an account for the core scan flow</li>
+        <li>sell personal data</li>
+        <li>use scanned products for advertising profiles</li>
+        <li>use AI to make the final PASS/CHECK/AVOID decision</li>
+        <li>intentionally store raw label images permanently</li>
+        <li>intentionally store API keys, tokens, raw images, or health/profile details in production logs</li>
+      </ul>
+      <h2>Data sharing</h2>
       <p>
-        Results depend on available product data or scanned label text. Product data may be
-        incomplete, outdated, or incorrect. Scanned label text may be imperfect. When data is
-        missing or unclear, BiteOrNot is designed to show CHECK.
+        BiteOrNot may share limited data with service providers only when needed to operate the
+        app:
+      </p>
+      <ul>
+        <li>Open Food Facts: barcode lookup and public product data</li>
+        <li>Google Cloud / Firebase: backend hosting, App Check, Firestore, logging, security, and rate limiting</li>
+        <li>Google Vision OCR and Google Gemini: OCR and label data extraction/normalization</li>
+      </ul>
+      <p>
+        These services process data according to their own terms and privacy policies.
+      </p>
+      <h2>Local data deletion</h2>
+      <p>You can delete local app data by clearing the app data from Android settings or uninstalling the app.</p>
+      <p>
+        If BiteOrNot provides in-app history deletion, deleting history removes local scan history
+        from your device.
+      </p>
+      <h2>Children</h2>
+      <p>
+        BiteOrNot is not intended for children under the age required by applicable law to use
+        such apps without parental consent.
+      </p>
+      <h2>Medical disclaimer</h2>
+      <p>
+        BiteOrNot is not medical advice. Results are based on product label data, public product
+        databases, OCR/AI extraction, and your selected restrictions.
+      </p>
+      <p>
+        Product data may be missing, incomplete, outdated, unclear, or incorrectly scanned. When
+        data is missing or unclear, BiteOrNot is designed to return CHECK rather than a false PASS.
+      </p>
+      <p>
+        Always read the product label yourself, especially if you have allergies or medical dietary
+        restrictions. Consult a qualified professional for medical advice.
       </p>
       <h2>Contact</h2>
+      <p>For privacy questions, contact:</p>
       <p>contact@biteornot.com</p>
     </LegalPageLayout>
   );
